@@ -1,0 +1,55 @@
+{
+    "name": "sample",
+    "durableExecutionId": "sample",
+    "payload": "{\"input\": \"abc\"}",
+    "status": "completed",
+    "scheduledAt": "2024-03-08T14:20:00Z",
+    "completedAt": "2024-03-08T18:32:00Z",
+    "version" : 125,
+    "steps": [{
+        "durableStepId": "durable Step id sample",
+        "result": "{\"ok\": false}",
+        "scheduledAt": "2024-03-08T15:30:12Z",
+        "completedAt": "2024-03-08T15:32:00Z",
+        "inTaskInfo": {
+            "taskName": "step1_task",
+            "id": "some task id",
+            "executionTime": "2024-03-08T15:30:12Z",
+            "consecutiveFailures": 0,
+            "executionVersion": 1
+        }
+    },
+    {
+        "durableStepId": "durable Step 2",
+        "result": "{\"ok\": false}",
+        "scheduledAt": "2024-03-08T16:31:12Z",
+        "completedAt": "2024-03-08T16:55:00Z",
+        "inTaskInfo": {
+            "taskName": "step1_task",
+            "id": "some task id",
+            "executionTime": "2024-03-08T15:30:12Z",
+            "consecutiveFailures": 0,
+            "executionVersion": 1
+        }        
+    },
+    {
+        "durableStepId": "durable Step 2",
+        "result": "{\"ok\": false}",
+        "scheduledAt": "2024-03-08T16:31:12Z",
+        "inTaskInfo": {
+            "taskName": "step1_task",
+            "id": "some task id",
+            "executionTime": "2024-03-08T15:30:12Z",
+            "consecutiveFailures": 0,
+            "executionVersion": 1
+        },
+        "outTaskInfo": {
+            "taskName": "step3_task",
+            "id": "some task id",
+            "executionTime": "2024-03-08T15:30:12Z",
+            "consecutiveFailures": 0,
+            "executionVersion": 1
+        }           
+    }
+]
+}

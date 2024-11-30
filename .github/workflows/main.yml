@@ -41,5 +41,6 @@ jobs:
             vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
             working-directory: ./dist
             vercel-project-name: hello-sycamore
+            vercel-args: --prod
 
 

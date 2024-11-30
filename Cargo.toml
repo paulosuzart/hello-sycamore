@@ -1,0 +1,19 @@
+[package]
+name = "hello-sycamore"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+sycamore = { version = "0.9.1", features = ["serde"] }
+serde_with = { version = "2", features = ["chrono"] }
+serde_json = "1.0"
+serde = { version = "1.0.215", features = ["derive", "serde_derive"] }
+log = "0.4.22"
+web-sys = { version = "0.3.73", features = ["Storage"] }
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = "s"
+lto = true

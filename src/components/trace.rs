@@ -148,14 +148,15 @@ fn StepItem(
              span(class="ml-2 text-xs text-gray-500"){ (duration_text) }
             }
         }
-        div(class="h-8 relative bg-gray-100 rounded-lg overflow-hidden") {
+        div(class="h-8 relative bg-gray-100 rounded-lg overflow-visible group") {
          button(
                 on:click=on_show,
-                class="absolute h-full transition-all bg-blue-600 hover:bg-blue-600",
+                class="absolute h-full transition-all bg-blue-600 hover:bg-blue-600 hover:bg-teal-600 duration-300 ease-in-out transform hover:scale-105",
                 style=format!("left: {}%; width: {}%;",  min_position, task_width)) {
 
                 span(class="sr-only") { "View details for assign-card-trx"}
             }
+
         }
         div(class="flex justify-between mt-1 text-xs text-gray-500"){
             span() { (start_at_text) }

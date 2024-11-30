@@ -5,7 +5,7 @@ use sycamore::prelude::*;
 #[component(inline_props)]
 pub(crate) fn StepDetail<F>(step_trace: StepTrace, h: F) -> View
 where
-    F : Fn() + Copy + 'static,
+    F: Fn() + Copy + 'static,
 {
     let completed_at_text = step_trace.completed_at_text();
     let in_task_json_text = step_trace.in_task_text();

@@ -7,7 +7,7 @@ use sycamore::prelude::*;
 
 #[derive(Props)]
 pub struct TraceProps {
-    trace: DurableTrace
+    trace: DurableTrace,
 }
 
 #[component(inline_props)]

@@ -55,6 +55,6 @@ pub(crate) fn find_max_completion(
         .reduce(|a, b| a.max(b))
         .unwrap_or_default()
         .max(durable_completed_at)
-        .or_else(||durable_scheduled_at.checked_add_signed(TimeDelta::seconds(15)));
+        .or_else(|| durable_scheduled_at.checked_add_signed(TimeDelta::seconds(15)));
     max_completion.unwrap()
 }

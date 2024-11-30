@@ -39,16 +39,17 @@ impl StepTrace {
     }
 
     fn out_task_text(&self) -> String {
-        self.out_task_info.as_ref()
+        self.out_task_info
+            .as_ref()
             .map(|info| serde_json::to_string_pretty(&info).unwrap_or_default())
             .unwrap_or_default()
     }
 
     fn completed_at_text(&self) -> String {
-        self
-        .completed_at.as_ref()
-        .map(|completed_at| completed_at.to_rfc3339())
-        .unwrap_or("-".to_string())
+        self.completed_at
+            .as_ref()
+            .map(|completed_at| completed_at.to_rfc3339())
+            .unwrap_or("-".to_string())
     }
 }
 

@@ -31,7 +31,7 @@ where
                     h3(class="text-xl font-normal text-gray-500 mt-5 mb-6") {
                         "Invalid Json. Please paste a valid durable trace json:"
                     }
-                    p(class="text-s") { (error_msg.get_clone()) }
+                    p(class="text-s") { (error_msg) }
                 }
             }
         }

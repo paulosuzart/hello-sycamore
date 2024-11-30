@@ -67,6 +67,14 @@ where
             }
             button(on:click=parse_json,
                 class="rounded border-0 bg-indigo-500 py-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none") { "Load Trace" }
+
+            div(class="text-m text-gray-900 d-flex justify-content-end align-items-center") {
+                "Use this "
+                a(class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600",
+                href="https://github.com/paulosuzart/hello-sycamore/blob/c510728ade6ca861b4549fdb3ea05315e1b863f6/example_trace.json", target="blank") {
+                    "Example JSON"
+                } " to get started."
+            }
         }
     }
 }

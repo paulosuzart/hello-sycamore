@@ -102,13 +102,16 @@ fn Summary(id: String) -> View {
 }
 
 #[component(inline_props)]
-fn StepItem(
+fn StepItem<F>(
     max_completion: DateTime<Utc>,
     delta_window: f64,
     second_rate: f64,
     step: StepTrace,
-    step_detail: Signal<StepDetailEnum>,
-) -> View {
+    on_show_step: F,
+) -> View 
+where 
+    F: Fn(StepTrace) + Copy + 'static,
+{
     // difference between the latest completed date to the scheduler at of the task
     let min_delta = max_completion - step.scheduled_at;
     // the position in % where the step should tart to be rendered
@@ -139,7 +142,7 @@ fn StepItem(
 
     let step_id = step.durable_step_id.clone();
     let on_show = move |_| {
-        step_detail.set(StepDetailEnum::Loaded(step.clone()));
+        on_show_step(step.clone());
     };
     view! {
         div(class="relative") {
@@ -184,7 +187,7 @@ pub fn Steps(
     let second_rate = 1.0 * 100.0 / delta_window;
     let step_detail = create_signal(StepDetailEnum::NotSet);
     let hide_detail = move || step_detail.set(StepDetailEnum::NotSet);
-
+    let on_show_step = move |step| step_detail.set(StepDetailEnum::Loaded(step));
     view! {
         div(class="space-y-6") {
             Keyed(list=steps,
@@ -192,12 +195,12 @@ pub fn Steps(
                     StepItem(max_completion=max_completion,
                         delta_window=delta_window,
                         second_rate=second_rate, step=step,
-                        step_detail=step_detail)
+                        on_show_step=on_show_step)
             },
             key=|step| step.durable_step_id.clone())
         }
         (match step_detail.get_clone() {
-            StepDetailEnum::Loaded(t) => view! { StepDetail(step_trace=t, h=hide_detail) },
+            StepDetailEnum::Loaded(t) => view! { StepDetail(step_trace=t, on_hide_step=hide_detail) },
             StepDetailEnum::NotSet => view! {},
         })
     }

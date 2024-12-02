@@ -3,7 +3,7 @@ use sycamore::prelude::*;
 
 // h parameter is the callback to hide the sidepanel
 #[component(inline_props)]
-pub(crate) fn StepDetail<F>(step_trace: StepTrace, h: F) -> View
+pub(crate) fn StepDetail<F>(step_trace: StepTrace, on_hide_step: F) -> View
 where
     F: Fn() + Copy + 'static,
 {
@@ -17,7 +17,7 @@ where
                 div(class="flex items-center justify-between px-6 py-4 border-b border-gray-200") {
                   h2(class="text-lg font-semibold text-gray-900") { "Step Details" }
                     button(
-                        on:click=move |_| h(),
+                        on:click=move |_| on_hide_step(),
                         class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500") {
                         svg(
                         xmlns="http://www.w3.org/2000/svg", width="24", height="24", viewBox="0 0 24 24", fill="none",

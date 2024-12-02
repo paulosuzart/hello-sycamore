@@ -186,7 +186,7 @@ pub fn Steps(
     let delta_window = (max_completion - min_completion).num_seconds() as f64;
     let second_rate = 1.0 * 100.0 / delta_window;
     let step_detail = create_signal(StepDetailEnum::NotSet);
-    let hide_detail = move || step_detail.set(StepDetailEnum::NotSet);
+    let on_hide_step = move || step_detail.set(StepDetailEnum::NotSet);
     let on_show_step = move |step| step_detail.set(StepDetailEnum::Loaded(step));
     view! {
         div(class="space-y-6") {
@@ -200,7 +200,7 @@ pub fn Steps(
             key=|step| step.durable_step_id.clone())
         }
         (match step_detail.get_clone() {
-            StepDetailEnum::Loaded(t) => view! { StepDetail(step_trace=t, on_hide_step=hide_detail) },
+            StepDetailEnum::Loaded(step_trace) => view! { StepDetail(step_trace=step_trace, on_hide_step=on_hide_step) },
             StepDetailEnum::NotSet => view! {},
         })
     }

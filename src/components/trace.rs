@@ -108,8 +108,8 @@ fn StepItem<F>(
     second_rate: f64,
     step: StepTrace,
     on_show_step: F,
-) -> View 
-where 
+) -> View
+where
     F: Fn(StepTrace) + Copy + 'static,
 {
     // difference between the latest completed date to the scheduler at of the task
